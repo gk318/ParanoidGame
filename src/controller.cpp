@@ -21,6 +21,10 @@ void Controller::HandleInput(bool &running, ParanoidBat &bat) const {
         case SDLK_RIGHT:
           ChangeDirection(bat, ParanoidBat::Direction::kRight);
           break;
+
+        case SDLK_DOWN:
+          ChangeDirection(bat, ParanoidBat::Direction::kStop);
+          break;
       }
     }
   }

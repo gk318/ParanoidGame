@@ -6,6 +6,7 @@
 #include "controller.h"
 #include "renderer.h"
 #include "bat.h"
+#include "ball.h"
 
 class Game {
  public:
@@ -17,7 +18,8 @@ class Game {
 
  private:
   ParanoidBat bat;
-  SDL_Point food;
+  ParanoidBall ball;
+  //SDL_Point food;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -26,7 +28,7 @@ class Game {
 
   int score{0};
 
-  void PlaceFood();
+  void PlaceBall();
   void Update();
 };
 

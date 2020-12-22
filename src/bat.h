@@ -6,7 +6,7 @@
 
 class ParanoidBat{
   public:
-  enum class Direction {kLeft, kRight};
+  enum class Direction {kLeft, kRight, kStop};
 
   ParanoidBat(int grid_width, int grid_height)
       : grid_width(grid_width),

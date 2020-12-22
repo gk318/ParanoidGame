@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(ParanoidBat const bat, SDL_Point const &ball) {
+void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -49,8 +49,8 @@ void Renderer::Render(ParanoidBat const bat, SDL_Point const &ball) {
 
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
-  block.x = ball.x * block.w;
-  block.y = ball.y * block.h;
+  block.x = ball.ball_x * block.w;
+  block.y = ball.ball_y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
   // Render snake's body

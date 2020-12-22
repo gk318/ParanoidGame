@@ -4,6 +4,7 @@
 #include <vector>
 #include "SDL.h"
 #include "bat.h"
+#include "ball.h"
 
 class Renderer {
  public:
@@ -11,7 +12,7 @@ class Renderer {
            const std::size_t grid_width, const std::size_t grid_height);
   ~Renderer();
 
-  void Render(ParanoidBat const bat, SDL_Point const &ball);
+  void Render(ParanoidBat const bat, ParanoidBall const &ball);
   void UpdateWindowTitle(int score, int fps);
 
  private:

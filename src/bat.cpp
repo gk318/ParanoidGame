@@ -28,6 +28,9 @@ void ParanoidBat::UpdateHead() {
     case Direction::kRight:
       head_x += speed;
       break;
+
+    case Direction::kStop:
+      break;
   }
 
   // Wrap the Snake around to the beginning if going off of the screen.
@@ -45,38 +48,6 @@ void ParanoidBat::UpdateBody(SDL_Point& center) {
 
   body.push_back(leftmost_cell);
   body.push_back(rightmost_cell);
-
-/*   switch (direction) {
-    case Direction::kLeft:
-      head_x -= speed;
-      body.emplace(body.begin(), leftmost_cell);
-      body.erase(body.end());
-      break;
-
-    case Direction::kRight:
-      head_x += speed;
-      body.emplace_back(rightmost_cell);
-      body.erase(body.begin());
-      break; */
-  //}
-
-/*   // Add previous head location to vector
-  body.push_back(prev_head_cell);
-
-  if (!growing) {
-    // Remove the tail from the vector.
-    body.erase(body.begin());
-  } else {
-    growing = false;
-    size++;
-  }
-
-  // Check if the snake has died. TODO: Check if the ball is lost
-  for (auto const &item : body) {
-    if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
-      alive = false;
-    }
-  }*/
 }
 
 void ParanoidBat::GrowBody() {growing = true;}
