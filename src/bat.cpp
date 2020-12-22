@@ -1,8 +1,8 @@
-#include "snake.h"
+#include "bat.h"
 #include <cmath>
 #include <iostream>
 
-void Snake::Update() {
+void ParanoidBat::Update() {
   SDL_Point prev_cell{
       static_cast<int>(head_x),
       static_cast<int>(
@@ -19,15 +19,15 @@ void Snake::Update() {
   }
 }
 
-void Snake::UpdateHead() {
+void ParanoidBat::UpdateHead() {
   switch (direction) {
-    case Direction::kUp:
+/*     case Direction::kUp:
       head_y -= speed;
       break;
 
     case Direction::kDown:
       head_y += speed;
-      break;
+      break; */
 
     case Direction::kLeft:
       head_x -= speed;
@@ -39,11 +39,11 @@ void Snake::UpdateHead() {
   }
 
   // Wrap the Snake around to the beginning if going off of the screen.
-  head_x = fmod(head_x + grid_width, grid_width);
-  head_y = fmod(head_y + grid_height, grid_height);
+/*   head_x = fmod(head_x + grid_width, grid_width);
+  head_y = fmod(head_y + grid_height, grid_height); */
 }
 
-void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
+void ParanoidBat::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
   // Add previous head location to vector
   body.push_back(prev_head_cell);
 
@@ -55,7 +55,7 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
     size++;
   }
 
-  // Check if the snake has died.
+  // Check if the snake has died. TODO: Check if the ball is lost
   for (auto const &item : body) {
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
@@ -63,10 +63,10 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   }
 }
 
-void Snake::GrowBody() { growing = true; }
+void ParanoidBat::GrowBody() {growing = true;}
 
-// Inefficient method to check if cell is occupied by snake.
-bool Snake::SnakeCell(int x, int y) {
+// Inefficient method to check if cell is occupied by bat.
+bool ParanoidBat::BatCell(int x, int y) {
   if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
     return true;
   }
