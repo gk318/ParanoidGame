@@ -8,8 +8,7 @@ class Controller {
   void HandleInput(bool &running, ParanoidBat &bat) const;
 
  private:
-  void ChangeDirection(ParanoidBat &bat, ParanoidBat::Direction input,
-                       ParanoidBat::Direction opposite) const;
+  void ChangeDirection(ParanoidBat &bat, ParanoidBat::Direction input) const;
 };
 
 #endif

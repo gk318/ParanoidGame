@@ -2,9 +2,8 @@
 #include <iostream>
 #include "SDL.h"
 
-void Controller::ChangeDirection(ParanoidBat &snake, ParanoidBat::Direction input,
-                                 ParanoidBat::Direction opposite) const {
-  if (snake.direction != opposite || snake.size == 1) snake.direction = input;
+void Controller::ChangeDirection(ParanoidBat &bat, ParanoidBat::Direction input) const {
+  if (bat.direction != input) bat.direction = input;
   return;
 }
 
@@ -16,13 +15,11 @@ void Controller::HandleInput(bool &running, ParanoidBat &bat) const {
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_LEFT:
-          ChangeDirection(bat, ParanoidBat::Direction::kLeft,
-                          ParanoidBat::Direction::kRight);
+          ChangeDirection(bat, ParanoidBat::Direction::kLeft);
           break;
 
         case SDLK_RIGHT:
-          ChangeDirection(bat, ParanoidBat::Direction::kRight,
-                          ParanoidBat::Direction::kLeft);
+          ChangeDirection(bat, ParanoidBat::Direction::kRight);
           break;
       }
     }
