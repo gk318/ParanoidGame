@@ -3,19 +3,19 @@
 #include <iostream>
 
 void ParanoidBat::Update() {
-  SDL_Point prev_cell{
+  SDL_Point prev_head{
       static_cast<int>(head_x),
       static_cast<int>(
           head_y)};  // We first capture the head's cell before updating.
   UpdateHead();
-  SDL_Point current_cell{
+  SDL_Point current_head{
       static_cast<int>(head_x),
       static_cast<int>(head_y)};  // Capture the head's cell after updating.
 
-  // Update all of the body vector items if the snake head has moved to a new
+  // Update all of the body vector items if the bat head has moved to a new
   // cell.
-  if (current_cell.x != prev_cell.x || current_cell.y != prev_cell.y) {
-    UpdateBody(current_cell, prev_cell);
+  if (current_head.x != prev_head.x || current_head.y != prev_head.y) {
+    UpdateBody(current_head);
   }
 }
 
@@ -35,8 +35,32 @@ void ParanoidBat::UpdateHead() {
   head_y = fmod(head_y + grid_height, grid_height);
 }
 
-void ParanoidBat::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
-  // Add previous head location to vector
+void ParanoidBat::UpdateBody(SDL_Point& center) {
+
+  body.clear();
+  body.push_back(center);
+
+  SDL_Point leftmost_cell{center.x-1, center.y};
+  SDL_Point rightmost_cell{center.x+1, center.y};
+
+  body.push_back(leftmost_cell);
+  body.push_back(rightmost_cell);
+
+/*   switch (direction) {
+    case Direction::kLeft:
+      head_x -= speed;
+      body.emplace(body.begin(), leftmost_cell);
+      body.erase(body.end());
+      break;
+
+    case Direction::kRight:
+      head_x += speed;
+      body.emplace_back(rightmost_cell);
+      body.erase(body.begin());
+      break; */
+  //}
+
+/*   // Add previous head location to vector
   body.push_back(prev_head_cell);
 
   if (!growing) {
@@ -52,7 +76,7 @@ void ParanoidBat::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
     }
-  }
+  }*/
 }
 
 void ParanoidBat::GrowBody() {growing = true;}
