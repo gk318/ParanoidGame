@@ -8,13 +8,8 @@ class ParanoidBat{
   public:
   enum class Direction {kLeft, kRight, kStop};
 
-  ParanoidBat(int grid_width, int grid_height)
-      : grid_width(grid_width),
-        grid_height(grid_height),
-        head_x(grid_width / 2),
-        head_y(grid_height - 1) 
-        {
-        };
+  ParanoidBat(int grid_width, int grid_height);
+  
   void Update();
   bool BatCell(int x, int y);
   void GrowBody();

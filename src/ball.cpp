@@ -2,7 +2,9 @@
 #include <cmath>
 #include <iostream>
 
-void ParanoidBall::Update() {
+void ParanoidBall::Update(Collision collision_status)
+{
+  _collision = collision_status;
   SDL_Point prev_ball{
       static_cast<int>(ball_x),
       static_cast<int>(
@@ -11,12 +13,6 @@ void ParanoidBall::Update() {
   SDL_Point current_ball{
       static_cast<int>(ball_x),
       static_cast<int>(ball_y)};  // Capture the head's cell after updating.
-
-/*   // Update all of the body vector items if the bat head has moved to a new
-  // cell.
-  if (current_ball.x != prev_ball.x || current_ball.y != prev_ball.y) {
-    UpdateBody(current_ball);
-  } */
 }
 
 void ParanoidBall::UpdateBall() {
@@ -27,7 +23,17 @@ void ParanoidBall::UpdateBall() {
       break;
 
     case Direction::k2:
-      ball_y -= speed;
+        switch (_collision)
+        {
+            case Collision::WallTop:
+                ball_y += speed;
+                direction = Direction::k8;
+                break;
+            
+            default:
+                ball_y -= speed;
+                break;
+        }
       break;
 
     case Direction::k3:
@@ -49,7 +55,22 @@ void ParanoidBall::UpdateBall() {
       break;
 
     case Direction::k8:
-      ball_y += speed;
+        printf("%d\n", static_cast<int>(_collision));
+        switch (_collision)
+        {
+            case Collision::None:
+                ball_y += speed;
+                break;
+
+            case Collision::Bat:
+                ball_y -= speed;
+                direction = Direction::k2;
+                break;
+            
+            default:
+                ball_y += speed;
+                break;
+        }
       break;
     
     case Direction::k9:

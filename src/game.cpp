@@ -4,11 +4,12 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
-      ball(grid_width, grid_height), 
-      engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
+      ball(grid_width, grid_height),
+      _grid_width(grid_width),
+      _grid_height(_grid_height),
+      engine(dev()) {
   PlaceBall();
+  CheckCollision();
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -54,8 +55,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 void Game::PlaceBall() {
   int x, y;
   while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
+    x = 5; //TODO: Set starting point
+    y = 5;
     // Check that the location is not occupied by a snake item before placing
     // food.
     if (!bat.BatCell(x, y)) {
@@ -70,7 +71,8 @@ void Game::Update() {
   if (!bat.alive) return;
 
   bat.Update();
-  ball.Update();
+  ball.Update(collision);
+  CheckCollision();
 
   int new_x = static_cast<int>(bat.head_x);
   int new_y = static_cast<int>(bat.head_y);
@@ -83,6 +85,46 @@ void Game::Update() {
     bat.GrowBody();
     bat.speed += 0.02;
   }
+}
+
+void Game::CheckCollision()
+{
+  printf("y positons for ball and bat %f, %f\n", ball.ball_y, bat.body.front().y);
+  
+    if ((ball.ball_x == 0) || (ball.ball_x == _grid_width))
+    {
+        collision = ParanoidBall::Collision::WallLeft;
+    }
+    //TODO: Separate for left and right walls
+
+    else if (ball.ball_y < 0.1)
+    {
+        collision = ParanoidBall::Collision::WallTop;
+    }
+
+    else if (abs((ball.ball_y + 1) - bat.body.front().y) < 0.1) 
+    { 
+      for(auto const& it : bat.body)
+      {
+        //printf("x positons for ball and bat %f, %f\n", ball.ball_x, it.x);
+        if (ball.ball_x + 1 == it.x)
+        {
+          collision = ParanoidBall::Collision::Bat;
+        }
+
+      }
+    }
+
+    else if (ball.ball_y == bat.body.front().y)
+    { 
+      collision = ParanoidBall::Collision::WallBottom;
+    }
+
+    else
+    {
+      collision = ParanoidBall::Collision::None;
+    }
+
 }
 
 int Game::GetScore() const { return score; }

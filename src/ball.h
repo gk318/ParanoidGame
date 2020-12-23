@@ -1,11 +1,13 @@
 #ifndef PARANOID_BALL_H
 #define PARANOID_BALL_H
-
+ 
 #include "SDL.h"
 
 class ParanoidBall{
   public:
   enum class Direction {k1, k2, k3, k4, k5, k6, k7, k8, k9};
+
+  enum class Collision {None, Bat, WallLeft, WallRight, WallTop, WallBottom};
 
   ParanoidBall(int grid_width, int grid_height)
       : grid_width(grid_width),
@@ -14,7 +16,7 @@ class ParanoidBall{
         ball_y(grid_height - 1) 
         {
         };
-  void Update();
+  void Update(Collision collision_status);
   bool BallCell(int x, int y);
   void GrowBody();
 
@@ -35,6 +37,7 @@ class ParanoidBall{
   bool growing{false};
   int grid_width;
   int grid_height;
+  Collision _collision{Collision::None};
 };
 
 #endif // PARANOID_BALL_H

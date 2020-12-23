@@ -2,6 +2,17 @@
 #include <cmath>
 #include <iostream>
 
+ParanoidBat::ParanoidBat(int grid_width, int grid_height)
+      : grid_width(grid_width),
+        grid_height(grid_height),
+        head_x(grid_width / 2),
+        head_y(grid_height - 1) 
+        {
+          SDL_Point init_bat {head_x, head_y};
+          UpdateHead();
+          UpdateBody(init_bat);
+        };
+
 void ParanoidBat::Update() {
   SDL_Point prev_head{
       static_cast<int>(head_x),
@@ -41,12 +52,11 @@ void ParanoidBat::UpdateHead() {
 void ParanoidBat::UpdateBody(SDL_Point& center) {
 
   body.clear();
-  body.push_back(center);
-
   SDL_Point leftmost_cell{center.x-1, center.y};
   SDL_Point rightmost_cell{center.x+1, center.y};
 
   body.push_back(leftmost_cell);
+  body.push_back(center);
   body.push_back(rightmost_cell);
 }
 

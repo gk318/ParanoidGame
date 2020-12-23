@@ -23,13 +23,17 @@ class Game {
 
   std::random_device dev;
   std::mt19937 engine;
-  std::uniform_int_distribution<int> random_w;
-  std::uniform_int_distribution<int> random_h;
 
+  float _grid_width;
+  float _grid_height;
   int score{0};
 
   void PlaceBall();
   void Update();
+
+  ParanoidBall::Collision collision{ParanoidBall::Collision::None};
+  void CheckCollision();
+
 };
 
 #endif
