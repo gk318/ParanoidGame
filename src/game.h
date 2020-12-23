@@ -23,7 +23,7 @@ class Game {
   ParanoidBat bat;
   ParanoidBall ball;
 
-  std::mutex lock_collision;
+  std::mutex _lock_collision;
   //SDL_Point food;
 
   std::random_device dev;

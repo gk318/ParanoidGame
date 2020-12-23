@@ -74,9 +74,9 @@ void Game::Update() {
 
   bat.Update();
 
-  lock_collision.lock();
+  _lock_collision.lock();
   ball.Update(collision);
-  lock_collision.unlock();
+  _lock_collision.unlock();
 
   CheckCollision();
 
