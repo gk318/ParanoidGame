@@ -8,6 +8,9 @@
 #include "bat.h"
 #include "ball.h"
 
+#include <memory>
+#include <mutex>
+
 class Game {
  public:
   Game(std::size_t grid_width, std::size_t grid_height);
@@ -19,6 +22,8 @@ class Game {
  private:
   ParanoidBat bat;
   ParanoidBall ball;
+
+  std::mutex lock_collision;
   //SDL_Point food;
 
   std::random_device dev;

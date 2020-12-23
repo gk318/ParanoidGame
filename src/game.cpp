@@ -4,10 +4,12 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
-      ball(grid_width, grid_height),
+    ball(grid_width, grid_height),
       _grid_width(grid_width),
       _grid_height(_grid_height),
-      engine(dev()) {
+      engine(dev())
+{
+  /* ball = new ParanoidBall(_grid_width, _grid_height); */
   PlaceBall();
   CheckCollision();
 }
@@ -71,7 +73,11 @@ void Game::Update() {
   if (!bat.alive) return;
 
   bat.Update();
+
+  lock_collision.lock();
   ball.Update(collision);
+  lock_collision.unlock();
+
   CheckCollision();
 
   int new_x = static_cast<int>(bat.head_x);
@@ -118,6 +124,7 @@ void Game::CheckCollision()
     else if (ball.ball_y == bat.body.front().y)
     { 
       collision = ParanoidBall::Collision::WallBottom;
+
     }
 
     else
