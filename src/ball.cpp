@@ -2,20 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-void ParanoidBall::Update(Collision collision_status)
-{
-  _collision = collision_status;
-  SDL_Point prev_ball{
-      static_cast<int>(ball_x),
-      static_cast<int>(
-          ball_y)};  // We first capture the head's cell before updating.
-  UpdateBall();
-  SDL_Point current_ball{
-      static_cast<int>(ball_x),
-      static_cast<int>(ball_y)};  // Capture the head's cell after updating.
-}
-
-void ParanoidBall::UpdateBall() {
+void ParanoidBall::Update(Collision const& collision) {
   switch (direction) {
     case Direction::k1:
       ball_x -= speed;
@@ -23,7 +10,7 @@ void ParanoidBall::UpdateBall() {
       break;
 
     case Direction::k2:
-        switch (_collision)
+        switch (collision)
         {
             case Collision::WallTop:
                 ball_y += speed;
@@ -55,8 +42,8 @@ void ParanoidBall::UpdateBall() {
       break;
 
     case Direction::k8:
-        printf("%d\n", static_cast<int>(_collision));
-        switch (_collision)
+        printf("%d\n", static_cast<int>(collision));
+        switch (collision)
         {
             case Collision::None:
                 ball_y += speed;

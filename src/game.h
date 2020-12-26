@@ -24,7 +24,6 @@ class Game {
   ParanoidBall ball;
 
   std::mutex _lock_collision;
-  //SDL_Point food;
 
   std::random_device dev;
   std::mt19937 engine;

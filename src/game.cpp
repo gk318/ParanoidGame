@@ -6,7 +6,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
     ball(grid_width, grid_height),
       _grid_width(grid_width),
-      _grid_height(_grid_height),
+      _grid_height(grid_height),
       engine(dev())
 {
   /* ball = new ParanoidBall(_grid_width, _grid_height); */
@@ -50,6 +50,12 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // achieve the correct frame rate.
     if (frame_duration < target_frame_duration) {
       SDL_Delay(target_frame_duration - frame_duration);
+    }
+
+    if (collision == ParanoidBall::Collision::WallBottom)
+    {
+        SDL_Quit();
+        break;
     }
   }
 }
@@ -97,16 +103,21 @@ void Game::CheckCollision()
 {
   printf("y positons for ball and bat %f, %f\n", ball.ball_y, bat.body.front().y);
   
-    if ((ball.ball_x == 0) || (ball.ball_x == _grid_width))
+    if (ball.ball_y < 0.1)
+    {
+        collision = ParanoidBall::Collision::WallTop;
+    }
+
+    else if (abs(ball.ball_y - _grid_height) <= 0.3)
+    { 
+      collision = ParanoidBall::Collision::WallBottom;
+    }
+
+    else if ((ball.ball_x == 0) || (ball.ball_x == _grid_width))
     {
         collision = ParanoidBall::Collision::WallLeft;
     }
     //TODO: Separate for left and right walls
-
-    else if (ball.ball_y < 0.1)
-    {
-        collision = ParanoidBall::Collision::WallTop;
-    }
 
     else if (abs((ball.ball_y + 1) - bat.body.front().y) < 0.1) 
     { 
@@ -121,16 +132,11 @@ void Game::CheckCollision()
       }
     }
 
-    else if (ball.ball_y == bat.body.front().y)
-    { 
-      collision = ParanoidBall::Collision::WallBottom;
-
-    }
-
     else
     {
       collision = ParanoidBall::Collision::None;
     }
+    printf("Grid height is %f, Collision is %d\n", _grid_height, collision);
 
 }
 

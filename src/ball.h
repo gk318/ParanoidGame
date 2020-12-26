@@ -16,7 +16,7 @@ class ParanoidBall{
         ball_y(grid_height - 1) 
         {
         };
-  void Update(Collision collision_status);
+  void Update(Collision const& collision);
   bool BallCell(int x, int y);
   void GrowBody();
 
@@ -31,13 +31,12 @@ class ParanoidBall{
   //std::vector<SDL_Point> body;
 
   private:
-  void UpdateBall();
+
   //void UpdateBody(SDL_Point& center);
 
   bool growing{false};
   int grid_width;
   int grid_height;
-  Collision _collision{Collision::None};
 };
 
 #endif // PARANOID_BALL_H
