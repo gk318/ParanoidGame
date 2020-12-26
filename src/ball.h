@@ -16,7 +16,7 @@ class ParanoidBall{
         ball_y(grid_height - 1) 
         {
         };
-  void Update(Collision const& collision);
+  void Update(Collision const& collision, int batDirection);
   bool BallCell(int x, int y);
   void GrowBody();
 

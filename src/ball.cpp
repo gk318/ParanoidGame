@@ -2,30 +2,49 @@
 #include <cmath>
 #include <iostream>
 
-void ParanoidBall::Update(Collision const& collision) {
+void ParanoidBall::Update(Collision const& collision, int batDirection) {
   switch (direction) {
     case Direction::k1:
-      ball_x -= speed;
-      ball_y -= speed;
+      switch (collision)
+      {
+        case Collision::WallLeft:
+          direction = Direction::k3;
+          break;
+        
+        default:
+          ball_x -= speed;
+          ball_y -= speed;
+          break;
+      }
       break;
 
     case Direction::k2:
         switch (collision)
         {
-            case Collision::WallTop:
-                ball_y += speed;
-                direction = Direction::k8;
-                break;
-            
-            default:
-                ball_y -= speed;
-                break;
+          case Collision::WallTop:
+            ball_y += speed;
+            direction = Direction::k8;
+            break;
+          
+          default:
+            ball_y -= speed;
+            break;
         }
       break;
 
     case Direction::k3:
-      ball_x += speed;
-      ball_y -= speed;
+      switch (collision)
+      {
+        case Collision::WallRight:
+          direction = Direction::k1;
+          break;
+        
+        default:
+          ball_x += speed;
+          ball_y -= speed;
+          break;
+      }
+
       break;
 
     case Direction::k4:
@@ -46,17 +65,28 @@ void ParanoidBall::Update(Collision const& collision) {
         switch (collision)
         {
             case Collision::None:
-                ball_y += speed;
-                break;
+              ball_y += speed;
+              break;
 
             case Collision::Bat:
-                ball_y -= speed;
-                direction = Direction::k2;
-                break;
+              ball_y -= speed;
+              switch (batDirection)
+              {
+                case 0:
+                  direction = Direction::k3;
+                  break;
+                case 1:
+                  direction = Direction::k1;
+                  break;
+                default:
+                 direction = Direction::k2;
+                 break;
+              }
+              break;
             
             default:
-                ball_y += speed;
-                break;
+              ball_y += speed;
+              break;
         }
       break;
     
