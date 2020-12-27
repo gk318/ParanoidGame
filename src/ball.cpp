@@ -10,7 +10,11 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
         case Collision::WallLeft:
           direction = Direction::k3;
           break;
-        
+               
+        case Collision::WallTop:
+          direction = Direction::k7;
+          break;
+
         default:
           ball_x -= speed;
           ball_y -= speed;
@@ -37,6 +41,10 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
       {
         case Collision::WallRight:
           direction = Direction::k1;
+          break;
+
+        case Collision::WallTop:
+          direction = Direction::k9;
           break;
         
         default:
