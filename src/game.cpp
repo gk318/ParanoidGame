@@ -31,13 +31,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, bat);
 
-/*     std::promise<ParanoidBat> prms;
-    std::future<ParanoidBat> ftr = prms.get_future();
-
-    // start thread and pass promise as argument
-    std::thread t(&Game::Update, this, std::move(prms));
-
-    bat = ftr.get(); */
     Update();
     renderer.Render(bat, ball);
 
@@ -91,12 +84,17 @@ void Game::PlaceBall() {
 void Game::Update() {
   if (!bat.alive) return;
 
-  bat.Update();
-  /* prms.set_value(bat); */
+  std::promise<ParanoidBat> prms;
+  std::thread t1(&ParanoidBat::Update, &bat);
+  //bat.Update();
+
   _lock_collision.lock();
-  ball.Update(collision, static_cast<int>(bat.direction));
+  std::thread t2(&ParanoidBall::Update, &ball, collision, static_cast<int>(bat.direction));
+  //ball.Update(collision, static_cast<int>(bat.direction));
   _lock_collision.unlock();
 
+  t1.join();
+  t2.join();
   CheckCollision();
 
   int new_x = static_cast<int>(bat.head_x);
