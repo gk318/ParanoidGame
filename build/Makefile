@@ -76,17 +76,6 @@ CMAKE_BINARY_DIR = /home/gaurav/paranoid_ws/ParanoidGame/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/cmake-3.17.1-Linux-x86_64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -97,6 +86,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/opt/cmake-3.17.1-Linux-x86_64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SnakeGame
+# Target rules for targets named ParanoidGame
 
 # Build rule for target.
-SnakeGame: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SnakeGame
-.PHONY : SnakeGame
+ParanoidGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ParanoidGame
+.PHONY : ParanoidGame
 
 # fast build rule for target.
-SnakeGame/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/build
-.PHONY : SnakeGame/fast
+ParanoidGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/build
+.PHONY : ParanoidGame/fast
 
 src/ball.o: src/ball.cpp.o
 
@@ -149,7 +149,7 @@ src/ball.o: src/ball.cpp.o
 
 # target to build an object file
 src/ball.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/ball.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/ball.cpp.o
 .PHONY : src/ball.cpp.o
 
 src/ball.i: src/ball.cpp.i
@@ -158,7 +158,7 @@ src/ball.i: src/ball.cpp.i
 
 # target to preprocess a source file
 src/ball.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/ball.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/ball.cpp.i
 .PHONY : src/ball.cpp.i
 
 src/ball.s: src/ball.cpp.s
@@ -167,7 +167,7 @@ src/ball.s: src/ball.cpp.s
 
 # target to generate assembly for a file
 src/ball.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/ball.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/ball.cpp.s
 .PHONY : src/ball.cpp.s
 
 src/bat.o: src/bat.cpp.o
@@ -176,7 +176,7 @@ src/bat.o: src/bat.cpp.o
 
 # target to build an object file
 src/bat.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/bat.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/bat.cpp.o
 .PHONY : src/bat.cpp.o
 
 src/bat.i: src/bat.cpp.i
@@ -185,7 +185,7 @@ src/bat.i: src/bat.cpp.i
 
 # target to preprocess a source file
 src/bat.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/bat.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/bat.cpp.i
 .PHONY : src/bat.cpp.i
 
 src/bat.s: src/bat.cpp.s
@@ -194,7 +194,7 @@ src/bat.s: src/bat.cpp.s
 
 # target to generate assembly for a file
 src/bat.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/bat.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/bat.cpp.s
 .PHONY : src/bat.cpp.s
 
 src/controller.o: src/controller.cpp.o
@@ -203,7 +203,7 @@ src/controller.o: src/controller.cpp.o
 
 # target to build an object file
 src/controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/controller.cpp.o
 .PHONY : src/controller.cpp.o
 
 src/controller.i: src/controller.cpp.i
@@ -212,7 +212,7 @@ src/controller.i: src/controller.cpp.i
 
 # target to preprocess a source file
 src/controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/controller.cpp.i
 .PHONY : src/controller.cpp.i
 
 src/controller.s: src/controller.cpp.s
@@ -221,7 +221,7 @@ src/controller.s: src/controller.cpp.s
 
 # target to generate assembly for a file
 src/controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
 src/game.o: src/game.cpp.o
@@ -230,7 +230,7 @@ src/game.o: src/game.cpp.o
 
 # target to build an object file
 src/game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/game.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/game.cpp.o
 .PHONY : src/game.cpp.o
 
 src/game.i: src/game.cpp.i
@@ -239,7 +239,7 @@ src/game.i: src/game.cpp.i
 
 # target to preprocess a source file
 src/game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/game.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/game.cpp.i
 .PHONY : src/game.cpp.i
 
 src/game.s: src/game.cpp.s
@@ -248,7 +248,7 @@ src/game.s: src/game.cpp.s
 
 # target to generate assembly for a file
 src/game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/game.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -257,7 +257,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -266,7 +266,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -275,7 +275,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/renderer.o: src/renderer.cpp.o
@@ -284,7 +284,7 @@ src/renderer.o: src/renderer.cpp.o
 
 # target to build an object file
 src/renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/renderer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o
 .PHONY : src/renderer.cpp.o
 
 src/renderer.i: src/renderer.cpp.i
@@ -293,7 +293,7 @@ src/renderer.i: src/renderer.cpp.i
 
 # target to preprocess a source file
 src/renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/renderer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/renderer.cpp.i
 .PHONY : src/renderer.cpp.i
 
 src/renderer.s: src/renderer.cpp.s
@@ -302,7 +302,7 @@ src/renderer.s: src/renderer.cpp.s
 
 # target to generate assembly for a file
 src/renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/renderer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/renderer.cpp.s
 .PHONY : src/renderer.cpp.s
 
 # Help Target
@@ -313,7 +313,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... SnakeGame"
+	@echo "... ParanoidGame"
 	@echo "... src/ball.o"
 	@echo "... src/ball.i"
 	@echo "... src/ball.s"

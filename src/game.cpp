@@ -60,9 +60,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
         SDL_Quit();
         break;
     }
-    
-    /* t.join(); */
-
   }
 }
 

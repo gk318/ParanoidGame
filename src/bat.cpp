@@ -46,7 +46,7 @@ void ParanoidBat::UpdateHead() {
       break;
   }
 
-  // Wrap the Snake around to the beginning if going off of the screen.
+  // Wrap around to the beginning if going off of the screen.
   head_x = fmod(head_x + grid_width, grid_width);
   head_y = fmod(head_y + grid_height, grid_height);
 }
