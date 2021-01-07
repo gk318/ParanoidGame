@@ -64,8 +64,35 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
       break;
 
     case Direction::k7:
-      ball_x -= speed;
-      ball_y += speed;
+
+      switch (collision)
+      {
+        case Collision::None:
+          ball_x -= speed;
+          ball_y += speed;
+          break;
+
+        case Collision::Bat:
+          ball_y -= speed;
+          switch (batDirection)
+          {
+            case 0:
+              direction = Direction::k3;
+              break;
+            case 1:
+              direction = Direction::k2;
+              break;
+            default:
+              direction = Direction::k1;
+              break;
+          }
+          break;
+        
+        default:
+          ball_y += speed;
+          break;
+      }
+      break;
       break;
 
     case Direction::k8:
@@ -99,8 +126,33 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
       break;
     
     case Direction::k9:
-      ball_x += speed;
-      ball_y += speed;
+      switch (collision)
+      {
+          case Collision::None:
+            ball_x += speed;
+            ball_y += speed;
+            break;
+
+          case Collision::Bat:
+            ball_y -= speed;
+            switch (batDirection)
+            {
+              case 0:
+                direction = Direction::k2;
+                break;
+              case 1:
+                direction = Direction::k1;
+                break;
+              default:
+                direction = Direction::k3;
+                break;
+            }
+            break;
+          
+          default:
+            ball_y += speed;
+            break;
+      }
       break;
   }
 

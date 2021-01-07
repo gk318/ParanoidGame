@@ -1,0 +1,3 @@
+/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/rebuild_cache.dir
+/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/edit_cache.dir
+/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/SnakeGame.dir

@@ -1,6 +1,8 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <thread>
+#include <memory>
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
@@ -28,6 +30,14 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, bat);
+
+/*     std::promise<ParanoidBat> prms;
+    std::future<ParanoidBat> ftr = prms.get_future();
+
+    // start thread and pass promise as argument
+    std::thread t(&Game::Update, this, std::move(prms));
+
+    bat = ftr.get(); */
     Update();
     renderer.Render(bat, ball);
 
@@ -57,6 +67,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
         SDL_Quit();
         break;
     }
+    
+    /* t.join(); */
+
   }
 }
 
@@ -79,7 +92,7 @@ void Game::Update() {
   if (!bat.alive) return;
 
   bat.Update();
-
+  /* prms.set_value(bat); */
   _lock_collision.lock();
   ball.Update(collision, static_cast<int>(bat.direction));
   _lock_collision.unlock();
@@ -101,7 +114,7 @@ void Game::Update() {
 
 void Game::CheckCollision()
 {
-  printf("y positons for ball and bat %f, %f\n", ball.ball_y, bat.body.front().y);
+  printf("y positons for ball and bat %f, %d\n", ball.ball_y, bat.body.front().y);
   
     if (ball.ball_y < 0.1)
     {
@@ -119,12 +132,12 @@ void Game::CheckCollision()
     }
     //TODO: Separate for left and right walls
 
-    else if (abs((ball.ball_y + 1) - bat.body.front().y) < 0.1) 
+    else if (abs((ball.ball_y + 1) - bat.body.front().y) < 0.3) 
     { 
       for(auto const& it : bat.body)
       {
-        //printf("x positons for ball and bat %f, %f\n", ball.ball_x, it.x);
-        if (ball.ball_x + 1 == it.x)
+        printf("x positons for ball and bat %f, %d\n", ball.ball_x, it.x);
+        if (static_cast<int>(ball.ball_x) == it.x)
         {
           collision = ParanoidBall::Collision::Bat;
         }
@@ -137,7 +150,7 @@ void Game::CheckCollision()
       collision = ParanoidBall::Collision::None;
     }
     printf("Grid height is %f, Collision is %d\n", _grid_height, collision);
-
+    printf("Diff to bat y %d\n", abs(static_cast<int>(ball.ball_y + 1) - bat.body.front().y));
 }
 
 int Game::GetScore() const { return score; }
