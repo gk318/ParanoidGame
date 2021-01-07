@@ -197,6 +197,33 @@ src/bat.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/bat.cpp.s
 .PHONY : src/bat.cpp.s
 
+src/brick.o: src/brick.cpp.o
+
+.PHONY : src/brick.o
+
+# target to build an object file
+src/brick.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/brick.cpp.o
+.PHONY : src/brick.cpp.o
+
+src/brick.i: src/brick.cpp.i
+
+.PHONY : src/brick.i
+
+# target to preprocess a source file
+src/brick.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/brick.cpp.i
+.PHONY : src/brick.cpp.i
+
+src/brick.s: src/brick.cpp.s
+
+.PHONY : src/brick.s
+
+# target to generate assembly for a file
+src/brick.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ParanoidGame.dir/build.make CMakeFiles/ParanoidGame.dir/src/brick.cpp.s
+.PHONY : src/brick.cpp.s
+
 src/controller.o: src/controller.cpp.o
 
 .PHONY : src/controller.o
@@ -320,6 +347,9 @@ help:
 	@echo "... src/bat.o"
 	@echo "... src/bat.i"
 	@echo "... src/bat.s"
+	@echo "... src/brick.o"
+	@echo "... src/brick.i"
+	@echo "... src/brick.s"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"

@@ -13,6 +13,6 @@ find_package(Threads REQUIRED)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS} src)
 
-add_executable(ParanoidGame src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/bat.cpp src/ball.cpp)
+add_executable(ParanoidGame src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/bat.cpp src/ball.cpp src/brick.cpp)
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(ParanoidGame ${SDL2_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})

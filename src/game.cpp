@@ -7,9 +7,10 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
     ball(grid_width, grid_height),
-      _grid_width(grid_width),
-      _grid_height(grid_height),
-      engine(dev())
+    brick(4,10),
+    _grid_width(grid_width),
+    _grid_height(grid_height),
+    engine(dev())
 {
   /* ball = new ParanoidBall(_grid_width, _grid_height); */
   PlaceBall();
@@ -32,7 +33,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     controller.HandleInput(running, bat);
 
     Update();
-    renderer.Render(bat, ball);
+    renderer.Render(bat, ball, brick);
 
     frame_end = SDL_GetTicks();
 

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gaurav/paranoid_ws/ParanoidGame/src/ball.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/ball.cpp.o"
   "/home/gaurav/paranoid_ws/ParanoidGame/src/bat.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/bat.cpp.o"
+  "/home/gaurav/paranoid_ws/ParanoidGame/src/brick.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/brick.cpp.o"
   "/home/gaurav/paranoid_ws/ParanoidGame/src/controller.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/controller.cpp.o"
   "/home/gaurav/paranoid_ws/ParanoidGame/src/game.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/game.cpp.o"
   "/home/gaurav/paranoid_ws/ParanoidGame/src/main.cpp" "/home/gaurav/paranoid_ws/ParanoidGame/build/CMakeFiles/ParanoidGame.dir/src/main.cpp.o"

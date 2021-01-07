@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ParanoidGame.dir/src/ball.cpp.o"
   "CMakeFiles/ParanoidGame.dir/src/bat.cpp.o"
+  "CMakeFiles/ParanoidGame.dir/src/brick.cpp.o"
   "CMakeFiles/ParanoidGame.dir/src/controller.cpp.o"
   "CMakeFiles/ParanoidGame.dir/src/game.cpp.o"
   "CMakeFiles/ParanoidGame.dir/src/main.cpp.o"

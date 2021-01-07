@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/gaurav/paranoid_ws/ParanoidGame/src/ball.cpp
-ball.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/ball.h
-cmath
--
-iostream
--
-
 /home/gaurav/paranoid_ws/ParanoidGame/src/ball.h
 SDL.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/SDL.h
-
-/home/gaurav/paranoid_ws/ParanoidGame/src/bat.cpp
-bat.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
-cmath
--
-iostream
--
 
 /home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
 vector
@@ -32,59 +16,11 @@ vector
 SDL.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/SDL.h
 
-/home/gaurav/paranoid_ws/ParanoidGame/src/controller.cpp
-controller.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/controller.h
-iostream
+/home/gaurav/paranoid_ws/ParanoidGame/src/brick.h
+vector
 -
 SDL.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/SDL.h
-
-/home/gaurav/paranoid_ws/ParanoidGame/src/controller.h
-bat.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
-
-/home/gaurav/paranoid_ws/ParanoidGame/src/game.cpp
-game.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/game.h
-iostream
--
-SDL.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/SDL.h
-thread
--
-memory
--
-
-/home/gaurav/paranoid_ws/ParanoidGame/src/game.h
-random
--
-SDL.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/SDL.h
-controller.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/controller.h
-renderer.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/renderer.h
-bat.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
-ball.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/ball.h
-memory
--
-mutex
--
-future
--
-
-/home/gaurav/paranoid_ws/ParanoidGame/src/main.cpp
-iostream
--
-controller.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/controller.h
-game.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/game.h
-renderer.h
-/home/gaurav/paranoid_ws/ParanoidGame/src/renderer.h
 
 /home/gaurav/paranoid_ws/ParanoidGame/src/renderer.cpp
 renderer.h
@@ -103,6 +39,8 @@ bat.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
 ball.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/ball.h
+brick.h
+/home/gaurav/paranoid_ws/ParanoidGame/src/brick.h
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

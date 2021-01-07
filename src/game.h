@@ -23,6 +23,7 @@ class Game {
  private:
   ParanoidBat bat;
   ParanoidBall ball;
+  ParanoidBrick brick;
 
   std::mutex _lock_collision;
 

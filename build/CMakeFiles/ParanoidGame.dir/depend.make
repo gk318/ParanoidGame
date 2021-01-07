@@ -95,6 +95,53 @@ CMakeFiles/ParanoidGame.dir/src/bat.cpp.o: /usr/include/SDL2/SDL_video.h
 CMakeFiles/ParanoidGame.dir/src/bat.cpp.o: /usr/include/SDL2/begin_code.h
 CMakeFiles/ParanoidGame.dir/src/bat.cpp.o: /usr/include/SDL2/close_code.h
 
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: ../src/brick.cpp
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: ../src/brick.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_assert.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_atomic.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_audio.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_blendmode.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_clipboard.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_config.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_cpuinfo.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_endian.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_error.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_events.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_filesystem.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_gamecontroller.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_gesture.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_haptic.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_hints.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_joystick.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_keyboard.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_keycode.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_loadso.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_log.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_main.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_messagebox.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_mouse.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_mutex.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_pixels.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_platform.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_power.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_quit.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_rect.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_render.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_rwops.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_scancode.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_shape.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_stdinc.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_surface.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_system.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_thread.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_timer.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_touch.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_version.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/SDL_video.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/begin_code.h
+CMakeFiles/ParanoidGame.dir/src/brick.cpp.o: /usr/include/SDL2/close_code.h
+
 CMakeFiles/ParanoidGame.dir/src/controller.cpp.o: ../src/bat.h
 CMakeFiles/ParanoidGame.dir/src/controller.cpp.o: ../src/controller.cpp
 CMakeFiles/ParanoidGame.dir/src/controller.cpp.o: ../src/controller.h
@@ -145,6 +192,7 @@ CMakeFiles/ParanoidGame.dir/src/controller.cpp.o: /usr/include/SDL2/close_code.h
 
 CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/ball.h
 CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/bat.h
+CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/brick.h
 CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/controller.h
 CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/game.cpp
 CMakeFiles/ParanoidGame.dir/src/game.cpp.o: ../src/game.h
@@ -196,6 +244,7 @@ CMakeFiles/ParanoidGame.dir/src/game.cpp.o: /usr/include/SDL2/close_code.h
 
 CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/ball.h
 CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/bat.h
+CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/brick.h
 CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/controller.h
 CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/game.h
 CMakeFiles/ParanoidGame.dir/src/main.cpp.o: ../src/main.cpp
@@ -247,6 +296,7 @@ CMakeFiles/ParanoidGame.dir/src/main.cpp.o: /usr/include/SDL2/close_code.h
 
 CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: ../src/ball.h
 CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: ../src/bat.h
+CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: ../src/brick.h
 CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: ../src/renderer.cpp
 CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: ../src/renderer.h
 CMakeFiles/ParanoidGame.dir/src/renderer.cpp.o: /usr/include/SDL2/SDL.h

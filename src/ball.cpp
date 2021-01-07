@@ -156,7 +156,7 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
       break;
   }
 
-  // Wrap the Snake around to the beginning if going off of the screen.
+  // Wrap around to the beginning if going off of the screen.
   ball_x = fmod(ball_x + grid_width, grid_width);
   ball_y = fmod(ball_y + grid_height, grid_height);
 }
