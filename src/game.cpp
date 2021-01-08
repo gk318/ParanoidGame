@@ -7,12 +7,12 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
     ball(grid_width, grid_height),
-    brick(4,10),
     _grid_width(grid_width),
     _grid_height(grid_height),
     engine(dev())
 {
   /* ball = new ParanoidBall(_grid_width, _grid_height); */
+  PlaceBricks();
   PlaceBall();
   CheckCollision();
 }
@@ -33,7 +33,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     controller.HandleInput(running, bat);
 
     Update();
-    renderer.Render(bat, ball, brick);
+    renderer.Render(bat, ball, bricks);
 
     frame_end = SDL_GetTicks();
 
@@ -62,6 +62,17 @@ void Game::Run(Controller const &controller, Renderer &renderer,
         break;
     }
   }
+}
+
+void Game::PlaceBricks()
+{
+/*   for (int i=0; i<2; i++)
+  { */
+    ParanoidBrick brick(4,10);
+    bricks.emplace_back(brick);
+    ParanoidBrick brick2(12,10);
+    bricks.emplace_back(brick2);
+/*   } */
 }
 
 void Game::PlaceBall() {

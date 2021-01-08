@@ -13,7 +13,7 @@ class Renderer {
            const std::size_t grid_width, const std::size_t grid_height);
   ~Renderer();
 
-  void Render(ParanoidBat const bat, ParanoidBall const &ball, ParanoidBrick const &brick);
+  void Render(ParanoidBat const bat, ParanoidBall const &ball, std::vector<ParanoidBrick> const &bricks);
   void UpdateWindowTitle(int score, int fps);
 
  private:

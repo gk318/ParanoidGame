@@ -23,8 +23,8 @@ class Game {
  private:
   ParanoidBat bat;
   ParanoidBall ball;
-  ParanoidBrick brick;
 
+  std::vector<ParanoidBrick> bricks;
   std::mutex _lock_collision;
 
   std::random_device dev;
@@ -34,6 +34,7 @@ class Game {
   float _grid_height;
   int score{0};
 
+  void PlaceBricks();
   void PlaceBall();
   void Update();
 

@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, ParanoidBrick const &brick) {
+void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, std::vector<ParanoidBrick> const &bricks) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -49,11 +49,14 @@ void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, ParanoidB
 
   // Render brick
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x1E, 0x00, 0xFF);
-  for (SDL_Point const &point : brick.brick_body)
+  for(auto brick : bricks)
   {
-    block.x = point.x * block.w;
-    block.y = point.y * block.h;
-    SDL_RenderFillRect(sdl_renderer, &block);
+    for (SDL_Point const &point : brick.brick_body)
+    {
+      block.x = point.x * block.w;
+      block.y = point.y * block.h;
+      SDL_RenderFillRect(sdl_renderer, &block);
+    }
   }
 
   // Render ball
