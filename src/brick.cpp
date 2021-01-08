@@ -15,7 +15,7 @@ void ParanoidBrick::Create()
     {
         SDL_Point current_pixel;
         current_pixel.x = left_x + idx;
-        current_pixel.y = 10;
+        current_pixel.y = left_y;
         brick_body.push_back(current_pixel);
     }
 }

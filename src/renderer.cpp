@@ -43,20 +43,25 @@ void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, std::vect
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
 
+  SDL_Rect brick;
+  brick.w = block.w * ParanoidBrick::brick_size;
+  brick.h = block.h;
+
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
 
-  // Render brick
-  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x1E, 0x00, 0xFF);
-  for(auto brick : bricks)
+  // Render bricks
+  for(auto curr_brick : bricks)
   {
-    for (SDL_Point const &point : brick.brick_body)
-    {
-      block.x = point.x * block.w;
-      block.y = point.y * block.h;
-      SDL_RenderFillRect(sdl_renderer, &block);
-    }
+    brick.x = curr_brick.brick_body.front().x * brick.w;
+    brick.y = curr_brick.brick_body.front().y * brick.h;
+
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x1E, 0x00, 0xFF);
+    SDL_RenderFillRect(sdl_renderer, &brick);
+    
+    SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xFF, 0x00, 0xFF);
+    SDL_RenderDrawRect(sdl_renderer, &brick);
   }
 
   // Render ball
@@ -65,23 +70,13 @@ void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, std::vect
   block.y = ball.ball_y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
-  // Render snake's body
+  // Render bat
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
   for (SDL_Point const &point : bat.body) {
     block.x = point.x * block.w;
     block.y = point.y * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
-
-  // Render snake's head
-  block.x = static_cast<int>(bat.head_x) * block.w;
-  block.y = static_cast<int>(bat.head_y) * block.h;
-  if (bat.alive) {
-    SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
-  } else {
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-  }
-  SDL_RenderFillRect(sdl_renderer, &block);
 
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
