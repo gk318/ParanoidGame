@@ -3,6 +3,9 @@
 #include "SDL.h"
 #include <thread>
 #include <memory>
+#include <random>
+#include <algorithm>
+
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : bat(grid_width, grid_height),
@@ -66,13 +69,27 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::PlaceBricks()
 {
-/*   for (int i=0; i<2; i++)
-  { */
-    ParanoidBrick brick(4,10);
-    bricks.emplace_back(brick);
-    ParanoidBrick brick2(12,10);
-    bricks.emplace_back(brick2);
-/*   } */
+  std::random_device rd; // obtain a random number from hardware
+  std::mt19937 gen(rd()); // seed the generator
+  std::uniform_int_distribution<> distr_x(0, 3*(_grid_width-ParanoidBrick::brick_size)); // define the range
+  std::uniform_int_distribution<> distr_y(0, 10);
+  for (int i=0; i<5; i++)
+  {
+    int rand_x = distr_x(gen)/3 ;
+    int rand_y = distr_y(gen);
+    auto it = std::find_if(occupied_bricks.begin(), occupied_bricks.end(), [rand_x, rand_y](const SDL_Point& e) {return ((e.x == rand_x) && (e.y == rand_y));});
+    if (it != occupied_bricks.end())
+    {
+      i--;
+      continue;
+    } 
+    else
+    {
+      SDL_Point curr_brick_pixel = {rand_x, rand_y};
+      occupied_bricks.emplace_back(curr_brick_pixel);
+      bricks.emplace_back(ParanoidBrick(rand_x, rand_y));
+    }
+  }
 }
 
 void Game::PlaceBall() {

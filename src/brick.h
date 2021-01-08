@@ -16,7 +16,7 @@ class ParanoidBrick{
 
   //Direction direction = Direction::kRight;
 
-  int brick_size{3};
+  static int const brick_size{3};
   bool alive{true};
   int left_x;
   int left_y;

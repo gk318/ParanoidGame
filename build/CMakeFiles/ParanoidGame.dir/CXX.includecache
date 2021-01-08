@@ -37,6 +37,10 @@ thread
 -
 memory
 -
+random
+-
+algorithm
+-
 
 /home/gaurav/paranoid_ws/ParanoidGame/src/game.h
 random
@@ -51,6 +55,8 @@ bat.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/bat.h
 ball.h
 /home/gaurav/paranoid_ws/ParanoidGame/src/ball.h
+brick.h
+/home/gaurav/paranoid_ws/ParanoidGame/src/brick.h
 memory
 -
 mutex

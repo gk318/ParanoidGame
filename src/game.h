@@ -7,6 +7,7 @@
 #include "renderer.h"
 #include "bat.h"
 #include "ball.h"
+#include "brick.h"
 
 #include <memory>
 #include <mutex>
@@ -25,13 +26,15 @@ class Game {
   ParanoidBall ball;
 
   std::vector<ParanoidBrick> bricks;
+  std::vector<SDL_Point> occupied_bricks;
+
   std::mutex _lock_collision;
 
   std::random_device dev;
   std::mt19937 engine;
 
-  float _grid_width;
-  float _grid_height;
+  std::size_t _grid_width;
+  std::size_t _grid_height;
   int score{0};
 
   void PlaceBricks();
