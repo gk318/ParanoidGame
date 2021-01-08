@@ -60,7 +60,7 @@ void ParanoidBat::UpdateBody(SDL_Point& center) {
   body.push_back(leftmost_cell);
   body.push_back(center);
   body.push_back(rightmost_cell);
-  printf("Body updated, x and y values are %d, %d, %d, %d, %d, %d\n", leftmost_cell.x, leftmost_cell.y, center.x, center.y, rightmost_cell.x, rightmost_cell.y);
+  //printf("Body updated, x and y values are %d, %d, %d, %d, %d, %d\n", leftmost_cell.x, leftmost_cell.y, center.x, center.y, rightmost_cell.x, rightmost_cell.y);
 }
 
 void ParanoidBat::GrowBody() {growing = true;}

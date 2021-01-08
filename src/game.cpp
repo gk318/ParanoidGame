@@ -71,17 +71,19 @@ void Game::PlaceBricks()
 {
   std::random_device rd; // obtain a random number from hardware
   std::mt19937 gen(rd()); // seed the generator
-  std::uniform_int_distribution<> distr_x(0, 3*(_grid_width-ParanoidBrick::brick_size)); // define the range
+  std::uniform_int_distribution<> distr_x(0, (_grid_width-ParanoidBrick::brick_size)); // define the range
   std::uniform_int_distribution<> distr_y(0, 10);
-  for (int i=0; i<5; i++)
+  for (int i=0; i<25; i++)
   {
-    int rand_x = distr_x(gen)/3 ;
+    int rand_x = distr_x(gen)/3; //This divide by 3 is done for renderer to consider brick width. FIXME: Can this be simplified?
     int rand_y = distr_y(gen);
+    printf("Random x and y is %d, %d\n", rand_x, rand_y);
+
+    // Find if brick is a part of already present bricks
     auto it = std::find_if(occupied_bricks.begin(), occupied_bricks.end(), [rand_x, rand_y](const SDL_Point& e) {return ((e.x == rand_x) && (e.y == rand_y));});
     if (it != occupied_bricks.end())
     {
       i--;
-      continue;
     } 
     else
     {
@@ -97,8 +99,8 @@ void Game::PlaceBall() {
   while (true) {
     x = 5; //TODO: Set starting point
     y = 5;
-    // Check that the location is not occupied by a snake item before placing
-    // food.
+    // FIXME:Checks that the location is not occupied by a brick item before placing
+    // ball. Check if this is needed
     if (!bat.BatCell(x, y)) {
       ball.ball_x = x;
       ball.ball_y = y;
@@ -126,11 +128,11 @@ void Game::Update() {
   int new_x = static_cast<int>(bat.head_x);
   int new_y = static_cast<int>(bat.head_y);
 
-  // Check if there's food over here
+  // FIXME: Check if there's ball over here. Check if this is needed
   if (ball.ball_x == new_x && ball.ball_y == new_y) {
     score++;
     PlaceBall();
-    // Grow snake and increase speed.
+    // FIXME: Grow bat and increase speed. Check if this is needed
     bat.GrowBody();
     bat.speed += 0.02;
   }
@@ -138,8 +140,6 @@ void Game::Update() {
 
 void Game::CheckCollision()
 {
-  printf("y positons for ball and bat %f, %d\n", ball.ball_y, bat.body.front().y);
-  
     if (ball.ball_y < 0.1)
     {
         collision = ParanoidBall::Collision::WallTop;
@@ -160,7 +160,7 @@ void Game::CheckCollision()
     { 
       for(auto const& it : bat.body)
       {
-        printf("x positons for ball and bat %f, %d\n", ball.ball_x, it.x);
+        //printf("x positons for ball and bat %f, %d\n", ball.ball_x, it.x);
         if (static_cast<int>(ball.ball_x) == it.x)
         {
           collision = ParanoidBall::Collision::Bat;
@@ -173,8 +173,8 @@ void Game::CheckCollision()
     {
       collision = ParanoidBall::Collision::None;
     }
-    printf("Grid height is %f, Collision is %d\n", _grid_height, collision);
-    printf("Diff to bat y %d\n", abs(static_cast<int>(ball.ball_y + 1) - bat.body.front().y));
+    //printf("Grid height is %f, Collision is %d\n", _grid_height, collision);
+    //printf("Diff to bat y %d\n", abs(static_cast<int>(ball.ball_y + 1) - bat.body.front().y));
 }
 
 int Game::GetScore() const { return score; }

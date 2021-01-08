@@ -96,7 +96,7 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
       break;
 
     case Direction::k8:
-        printf("%d\n", static_cast<int>(collision));
+        //printf("%d\n", static_cast<int>(collision));
         switch (collision)
         {
             case Collision::None:
