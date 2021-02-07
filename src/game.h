@@ -43,6 +43,7 @@ class Game {
 
   ParanoidBall::Collision collision{ParanoidBall::Collision::None};
   void CheckCollision();
+  bool CheckBrickCollision();
 
 };
 

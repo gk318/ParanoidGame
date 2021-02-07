@@ -88,8 +88,9 @@ void Game::PlaceBricks()
     else
     {
       SDL_Point curr_brick_pixel = {rand_x, rand_y};
-      occupied_bricks.emplace_back(curr_brick_pixel);
-      bricks.emplace_back(ParanoidBrick(rand_x, rand_y));
+      ParanoidBrick new_brick = ParanoidBrick(rand_x, rand_y);
+      //occupied_bricks.emplace_back(new_brick.brick_body);
+      bricks.emplace_back(new_brick);
     }
   }
 }
@@ -140,8 +141,8 @@ void Game::Update() {
 
 void Game::CheckCollision()
 {
-    printf("x positons for ball and bat %f, %d\n", ball.ball_x, bat.body.front().x);
-    printf("y positons for ball and bat %f, %d\n", ball.ball_y, bat.body.front().y);
+    //printf("x positons for ball and bat %f, %d\n", ball.ball_x, bat.body.front().x);
+    //printf("y positons for ball and bat %f, %d\n", ball.ball_y, bat.body.front().y);
     if (ball.ball_y < 0.1)
     {
         collision = ParanoidBall::Collision::WallTop;
@@ -174,12 +175,38 @@ void Game::CheckCollision()
       }
     }
 
+    else if (CheckBrickCollision())
+    {
+
+    }
+
     else
     {
+      CheckBrickCollision();
       collision = ParanoidBall::Collision::None;
     }
     //printf("Grid height is %f, Collision is %d\n", _grid_height, collision);
     //printf("Diff to bat y %d\n", abs(static_cast<int>(ball.ball_y + 1) - bat.body.front().y));
+}
+
+bool Game::CheckBrickCollision()
+{
+  SDL_Point curr_ball_pixel = {ball.ball_x, ball.ball_y};
+  for (auto it : bricks)
+  {
+    for (auto it1 : it.brick_body)
+    {
+          //printf("%d, %d \n", it1.x, curr_ball_pixel.x);
+
+      if ((it1.x == curr_ball_pixel.x) && (it1.y == curr_ball_pixel.y))
+      {
+        printf("Brick collsison \n");
+        return true;
+      }
+    }
+  }
+return false;
+
 }
 
 int Game::GetScore() const { return score; }
