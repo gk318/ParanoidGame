@@ -140,6 +140,8 @@ void Game::Update() {
 
 void Game::CheckCollision()
 {
+    printf("x positons for ball and bat %f, %d\n", ball.ball_x, bat.body.front().x);
+    printf("y positons for ball and bat %f, %d\n", ball.ball_y, bat.body.front().y);
     if (ball.ball_y < 0.1)
     {
         collision = ParanoidBall::Collision::WallTop;
@@ -150,9 +152,13 @@ void Game::CheckCollision()
       collision = ParanoidBall::Collision::WallBottom;
     }
 
-    else if ((ball.ball_x == 0) || (ball.ball_x == _grid_width))
+    else if (0.1 >= ball.ball_x)
     {
         collision = ParanoidBall::Collision::WallLeft;
+    }
+    else if (_grid_width-1 < ball.ball_x)
+    {
+        collision = ParanoidBall::Collision::WallRight;
     }
     //TODO: Separate for left and right walls
 
@@ -160,7 +166,6 @@ void Game::CheckCollision()
     { 
       for(auto const& it : bat.body)
       {
-        //printf("x positons for ball and bat %f, %d\n", ball.ball_x, it.x);
         if (static_cast<int>(ball.ball_x) == it.x)
         {
           collision = ParanoidBall::Collision::Bat;

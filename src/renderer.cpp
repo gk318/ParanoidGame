@@ -72,7 +72,8 @@ void Renderer::Render(ParanoidBat const bat, ParanoidBall const &ball, std::vect
 
   // Render bat
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-  for (SDL_Point const &point : bat.body) {
+  for (SDL_Point const &point : bat.body)
+  {
     block.x = point.x * block.w;
     block.y = point.y * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);

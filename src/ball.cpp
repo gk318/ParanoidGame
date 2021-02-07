@@ -88,7 +88,12 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
           }
           break;
         
+        case Collision::WallLeft:
+          direction = Direction::k9;
+          break;
+
         default:
+          ball_x -= speed;
           ball_y += speed;
           break;
       }
@@ -148,8 +153,13 @@ void ParanoidBall::Update(Collision const& collision, int batDirection) {
                 break;
             }
             break;
+
+          case Collision::WallRight:
+            direction = Direction::k7;
+            break;
           
           default:
+            ball_x += speed;
             ball_y += speed;
             break;
       }
